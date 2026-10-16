@@ -1,0 +1,227 @@
+{
+  "task": "unsupervised operational anomaly detection",
+  "records_used_for_training": 8000,
+  "records_scored": 8000,
+  "features": [
+    "wait_minutes",
+    "service_minutes",
+    "arrival_to_start_minutes",
+    "wait_difference_minutes",
+    "test_count",
+    "urgent_test_count",
+    "max_test_delay_minutes",
+    "missing_timestamp_count",
+    "timeline_inconsistent",
+    "triage_level",
+    "department",
+    "visit_type"
+  ],
+  "preprocessing": "DictVectorizer for categorical fields; median imputation; StandardScaler; IDs excluded",
+  "model": {
+    "type": "IsolationForest",
+    "n_estimators": 250,
+    "contamination": 0.05,
+    "random_seed": 42
+  },
+  "validation": "No ground-truth labels. Reference-fit score distribution and stability/rule overlap are reported; predictive validity is not established.",
+  "anomaly_score": {
+    "min": 0,
+    "median": 24.4,
+    "p95": 58.7,
+    "max": 100,
+    "flagged_count": 400,
+    "flagged_proportion": 0.05
+  },
+  "inference_seconds": 0.214,
+  "comparison": {
+    "queue_records": 3819,
+    "top_10_percent_overlap_with_previous_rule_ranking": 0.573
+  },
+  "flagged_examples": [
+    {
+      "encounter_id": "E003266",
+      "anomaly_score": 100,
+      "features": {
+        "wait_minutes": 97.0,
+        "service_minutes": 47.0,
+        "arrival_to_start_minutes": 97.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 3.0,
+        "urgent_test_count": 2.0,
+        "max_test_delay_minutes": 254.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 0.0,
+        "department": "D03",
+        "visit_type": "Emergency"
+      }
+    },
+    {
+      "encounter_id": "E006498",
+      "anomaly_score": 99.5,
+      "features": {
+        "wait_minutes": 2.0,
+        "service_minutes": 68.0,
+        "arrival_to_start_minutes": 2.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 2.0,
+        "urgent_test_count": 2.0,
+        "max_test_delay_minutes": 109.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 3.0,
+        "department": "D09",
+        "visit_type": "Follow-up"
+      }
+    },
+    {
+      "encounter_id": "E000365",
+      "anomaly_score": 93.7,
+      "features": {
+        "wait_minutes": 102.0,
+        "service_minutes": 137.0,
+        "arrival_to_start_minutes": 102.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 3.0,
+        "urgent_test_count": 1.0,
+        "max_test_delay_minutes": 106.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 0.0,
+        "department": "D06",
+        "visit_type": "Scheduled"
+      }
+    },
+    {
+      "encounter_id": "E003172",
+      "anomaly_score": 93.4,
+      "features": {
+        "wait_minutes": 2.0,
+        "service_minutes": 53.0,
+        "arrival_to_start_minutes": 2.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 4.0,
+        "urgent_test_count": 1.0,
+        "max_test_delay_minutes": 156.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 3.0,
+        "department": "D12",
+        "visit_type": "Walk-in"
+      }
+    },
+    {
+      "encounter_id": "E006398",
+      "anomaly_score": 92.1,
+      "features": {
+        "wait_minutes": 2.0,
+        "service_minutes": 38.0,
+        "arrival_to_start_minutes": 2.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 3.0,
+        "urgent_test_count": 1.0,
+        "max_test_delay_minutes": 107.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 3.0,
+        "department": "D09",
+        "visit_type": "Walk-in"
+      }
+    },
+    {
+      "encounter_id": "E002835",
+      "anomaly_score": 91.5,
+      "features": {
+        "wait_minutes": 86.0,
+        "service_minutes": 149.0,
+        "arrival_to_start_minutes": 86.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 1.0,
+        "urgent_test_count": 1.0,
+        "max_test_delay_minutes": 441.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 0.0,
+        "department": "D03",
+        "visit_type": "Follow-up"
+      }
+    },
+    {
+      "encounter_id": "E001458",
+      "anomaly_score": 91.0,
+      "features": {
+        "wait_minutes": 102.0,
+        "service_minutes": 59.0,
+        "arrival_to_start_minutes": 102.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 3.0,
+        "urgent_test_count": 1.0,
+        "max_test_delay_minutes": 106.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 0.0,
+        "department": "D11",
+        "visit_type": "Follow-up"
+      }
+    },
+    {
+      "encounter_id": "E007220",
+      "anomaly_score": 90.0,
+      "features": {
+        "wait_minutes": 6.0,
+        "service_minutes": 6.0,
+        "arrival_to_start_minutes": 6.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 2.0,
+        "urgent_test_count": 2.0,
+        "max_test_delay_minutes": 143.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 3.0,
+        "department": "D03",
+        "visit_type": "Walk-in"
+      }
+    },
+    {
+      "encounter_id": "E003880",
+      "anomaly_score": 89.0,
+      "features": {
+        "wait_minutes": 75.0,
+        "service_minutes": 261.0,
+        "arrival_to_start_minutes": 75.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 2.0,
+        "urgent_test_count": 1.0,
+        "max_test_delay_minutes": 118.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 1.0,
+        "department": "D10",
+        "visit_type": "Follow-up"
+      }
+    },
+    {
+      "encounter_id": "E000358",
+      "anomaly_score": 88.0,
+      "features": {
+        "wait_minutes": 2.0,
+        "service_minutes": 20.0,
+        "arrival_to_start_minutes": 2.0,
+        "wait_difference_minutes": 0.0,
+        "test_count": 2.0,
+        "urgent_test_count": 1.0,
+        "max_test_delay_minutes": 160.0,
+        "missing_timestamp_count": 0.0,
+        "timeline_inconsistent": 0.0,
+        "triage_level": 3.0,
+        "department": "D04",
+        "visit_type": "Follow-up"
+      }
+    }
+  ],
+  "limitations": [
+    "Synthetic data has no verified forgotten-patient label.",
+    "Anomaly means unusual relative to this dataset, not clinically important.",
+    "The 95th percentile flag is a review threshold, not a validated operating point."
+  ]
+}
